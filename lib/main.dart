@@ -64,6 +64,37 @@ class _MyHomePageState extends State<MyHomePage> {
     });
     log(list[0].first_name.toString());
   }
+  Future<void> updateData() async{
+    String url = "https://reqres.in/api/users/2";
+
+    Uri uri = Uri.parse(url);
+    Map<String,String> map = {
+      "name": "morpheus",
+      "job": "zion resident"
+    };
+    Response response = await put(uri,headers: map);
+    log(response.body.toString());
+
+  }
+  Future<void> updateSingleData() async{
+    String url = "https://reqres.in/api/users/2";
+
+    Uri uri = Uri.parse(url);
+    Map<String,String> map = {
+      "name": "morpheus",
+    };
+    Response response = await put(uri,headers: map);
+    log(response.body.toString());
+
+  }
+
+  Future<void> deleteData() async{
+    String url = "https://reqres.in/api/users/2";
+
+    Response response = await delete(Uri.parse(url));
+    log(response.body.toString());
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +106,10 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           //uploadPost();
-          getData();
+          //getData();
+          //updateData();
+          //updateSingleData();
+          deleteData();
         },
         tooltip: 'POST',
         child: const Icon(Icons.add),
