@@ -6,9 +6,15 @@ class User{
 
   factory User.fromJson(Map<String,dynamic> map){
     return User(
-      email: map['email'],
-      first_name: map['first_name'],
-      last_name: map['last_name'],
+      email: map['data']['email'],
+      first_name: map['data']['first_name'],
+      last_name: map['data']['last_name'],
     );
   }
+
+  Map<String,dynamic> toJson() => {
+    'email' : email,
+    'first_name' : first_name,
+    'last_name' : last_name,
+  };
 }
